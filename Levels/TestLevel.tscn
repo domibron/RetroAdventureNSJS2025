@@ -35,8 +35,9 @@ environment = SubResource("Environment_iqcmb")
 compositor = SubResource("Compositor_jyvk6")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.931283, 0.348578, -0.105859, 0.328591, -0.678292, 0.657228, 0.157291, -0.646849, -0.746221, 0, 1.752, 2.503)
+transform = Transform3D(0.201354, -0.533616, 0.821408, 0.878033, 0.470039, 0.0901191, -0.434183, 0.703077, 0.563176, 0, 1.752, 2.503)
 current = true
+fov = 1.0
 
 [node name="Camera3D2" type="Camera3D" parent="."]
 transform = Transform3D(-0.428381, -0.775548, -0.463697, -0.903245, 0.35317, 0.243762, -0.025285, 0.523255, -0.851801, 0.795465, 6.91782, 0.406541)
