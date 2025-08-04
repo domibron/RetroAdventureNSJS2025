@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://bw1ak5mkp1t8v"]
+
+[ext_resource type="PackedScene" uid="uid://csene2x0vvxph" path="res://Premade/Player_Character.tscn" id="1_uib4f"]
+[ext_resource type="Material" uid="uid://i4yp8o7yu3ve" path="res://Materials/Checkers.tres" id="2_iqcmb"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_uib4f"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_iqcmb"]
+
+[sub_resource type="Sky" id="Sky_y1yrn"]
+sky_material = SubResource("ProceduralSkyMaterial_iqcmb")
+
+[sub_resource type="Environment" id="Environment_iqcmb"]
+background_mode = 2
+sky = SubResource("Sky_y1yrn")
+ambient_light_color = Color(1, 1, 1, 1)
+fog_light_color = Color(0.442745, 0.476936, 0.530673, 1)
+fog_sun_scatter = 0.25
+fog_density = 0.1454
+
+[sub_resource type="Compositor" id="Compositor_jyvk6"]
+
+[node name="TestLevel" type="Node3D"]
+
+[node name="Player_Character" parent="." instance=ExtResource("1_uib4f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.270834, 0, 0.811996)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0)
+material_override = ExtResource("2_iqcmb")
+mesh = SubResource("PlaneMesh_uib4f")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_iqcmb")
+compositor = SubResource("Compositor_jyvk6")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.931283, 0.348578, -0.105859, 0.328591, -0.678292, 0.657228, 0.157291, -0.646849, -0.746221, 0, 1.752, 2.503)
+current = true
+
+[node name="Camera3D2" type="Camera3D" parent="."]
+transform = Transform3D(-0.428381, -0.775548, -0.463697, -0.903245, 0.35317, 0.243762, -0.025285, 0.523255, -0.851801, 0.795465, 6.91782, 0.406541)
+
+[node name="Camera3D3" type="Camera3D" parent="."]
+transform = Transform3D(-0.23894, -0.783346, 0.573826, 0, 0.590944, 0.806713, -0.971034, 0.192756, -0.1412, 3.02171, 4.00202, -0.057583)
