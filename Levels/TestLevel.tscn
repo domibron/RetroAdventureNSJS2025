@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bw1ak5mkp1t8v"]
+[gd_scene load_steps=10 format=3 uid="uid://bw1ak5mkp1t8v"]
 
 [ext_resource type="PackedScene" uid="uid://csene2x0vvxph" path="res://Premade/PlayerCharacter.tscn" id="1_uib4f"]
 [ext_resource type="Material" uid="uid://i4yp8o7yu3ve" path="res://Materials/Checkers.tres" id="2_iqcmb"]
@@ -21,10 +21,12 @@ fog_density = 0.1454
 
 [sub_resource type="Compositor" id="Compositor_jyvk6"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_y1yrn"]
+
 [node name="TestLevel" type="Node3D"]
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("1_uib4f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.271, 1, 0.812)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.278079, 1.01915, 0.812945)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0)
@@ -47,3 +49,9 @@ script = ExtResource("3_y1yrn")
 [node name="Camera3D3" type="Camera3D" parent="."]
 transform = Transform3D(-0.23894, -0.783346, 0.573826, 0, 0.590944, 0.806713, -0.971034, 0.192756, -0.1412, 3.02171, 4.00202, -0.057583)
 script = ExtResource("3_y1yrn")
+
+[node name="Area3D" type="Area3D" parent="."]
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_y1yrn")
