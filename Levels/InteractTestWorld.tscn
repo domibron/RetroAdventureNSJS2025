@@ -1,6 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://grosqh55xk23"]
+[gd_scene load_steps=5 format=3 uid="uid://grosqh55xk23"]
 
 [ext_resource type="PackedScene" uid="uid://csene2x0vvxph" path="res://Premade/PlayerCharacter.tscn" id="1_p85we"]
+[ext_resource type="Script" uid="uid://c3be8hys1jeik" path="res://Scripts/CameraLookAt.cs" id="2_prrav"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p85we"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_pdceh"]
 
@@ -8,6 +11,7 @@
 
 [node name="Ground" type="MeshInstance3D" parent="."]
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_p85we")
 mesh = SubResource("PlaneMesh_pdceh")
 skeleton = NodePath("")
 
@@ -15,4 +19,11 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="Camera0" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.832283, 0.554351, 0, -0.554351, 0.832283, 0, 9, 10)
+transform = Transform3D(1, 0, 0, 0, 0.697665, 0.716424, 0, -0.716424, 0.697665, 0, 9, 10)
+current = true
+script = ExtResource("2_prrav")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 23.2276, 0)
+omni_range = 788.112
+omni_attenuation = -0.215

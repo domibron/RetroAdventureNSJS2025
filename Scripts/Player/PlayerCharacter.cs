@@ -6,38 +6,32 @@ public partial class PlayerCharacter : CharacterBody3D
 	private Vector3 movementVector;
 
 	private Camera3D currentCamera;
+	private CameraLookAt cameraLookAt;
 
 	public override void _Process(double delta)
 	{
 		if (currentCamera != GetViewport().GetCamera3D())
 		{
 			currentCamera = GetViewport().GetCamera3D();
+			cameraLookAt = currentCamera as CameraLookAt;
+
 		}
 
 		// movement input vector.
-		movementVector = new Vector3(Input.GetActionStrength("M_Left") + -Input.GetActionStrength("M_Right"), 
+		Vector3 inputVector = new Vector3(-Input.GetActionStrength("M_Left") + Input.GetActionStrength("M_Right"), 
 			0, 
-			Input.GetActionStrength("M_Up") + -Input.GetActionStrength("M_Down")).Normalized();
+			-Input.GetActionStrength("M_Up") + Input.GetActionStrength("M_Down")).Normalized();
 
-
-		// we store the rotation, pos and all of the camera so we dont modify it directly.
-		Node3D mathCalc = currentCamera;
-
-		// reset the rotation of the camera.
-		mathCalc.Rotation = new Vector3(0, mathCalc.Rotation.Y, mathCalc.Rotation.Z);
 
 		// we can get a leveled movement direction.
-		GD.Print(mathCalc.Basis.Z);
+		movementVector = cameraLookAt.CameraStartTransform.Basis.X * inputVector.X + cameraLookAt.CameraStartTransform.Basis.Z * inputVector.Z;
 
-		//GD.Print(GetViewport().GetCamera3D().Name);
+
 	}
 
 	public override void _PhysicsProcess(double delta)
 	{
 		Velocity = movementVector;
-
 		MoveAndSlide();
-
-		
 	}
 }
