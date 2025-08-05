@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://i4yp8o7yu3ve"]
+
+[ext_resource type="Texture2D" uid="uid://dsyspom63n5xk" path="res://Images/Checkerboard_pattern.svg.png" id="1_rldau"]
+
+[resource]
+albedo_texture = ExtResource("1_rldau")
+uv1_triplanar = true
+uv1_world_triplanar = true
+point_size = 90.6
