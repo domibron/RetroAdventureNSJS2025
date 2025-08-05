@@ -12,7 +12,7 @@ public partial class CameraLookAt : Camera3D
 		Node3D calc = this;
 
 		// reset the rotation of the camera.
-		calc.Rotation = new Vector3(0, Rotation.Y, Rotation.Z);
+		calc.Rotation = new Vector3(0, Rotation.Y, 0);
 
 		CameraStartTransform = calc.GlobalTransform;
 
