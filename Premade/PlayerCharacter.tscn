@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://csene2x0vvxph"]
 
-[ext_resource type="Script" uid="uid://btc8172d7jpgm" path="res://Scripts/Player/PlayerMovement.cs" id="1_uyg48"]
+[ext_resource type="Script" uid="uid://djymytd1qqsuu" path="res://Scripts/Player/PlayerCharacter.cs" id="1_ga4px"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_e2x7v"]
 
@@ -9,7 +9,7 @@
 [sub_resource type="SphereMesh" id="SphereMesh_xmeow"]
 
 [node name="PlayerCharacter" type="CharacterBody3D"]
-script = ExtResource("1_uyg48")
+script = ExtResource("1_ga4px")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00921202, 0.0103493, -0.00611973)

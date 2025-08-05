@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://grosqh55xk23"]
+
+[ext_resource type="PackedScene" uid="uid://csene2x0vvxph" path="res://Premade/PlayerCharacter.tscn" id="1_p85we"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_pdceh"]
+
+[node name="Main" type="Node3D"]
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
+mesh = SubResource("PlaneMesh_pdceh")
+skeleton = NodePath("")
+
+[node name="PlayerCharacter" parent="." instance=ExtResource("1_p85we")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Camera0" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.832283, 0.554351, 0, -0.554351, 0.832283, 0, 9, 10)
