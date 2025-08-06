@@ -1,9 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://bw1ak5mkp1t8v"]
+[gd_scene load_steps=13 format=3 uid="uid://bw1ak5mkp1t8v"]
 
 [ext_resource type="PackedScene" uid="uid://csene2x0vvxph" path="res://Premade/PlayerCharacter.tscn" id="1_uib4f"]
 [ext_resource type="Material" uid="uid://i4yp8o7yu3ve" path="res://Materials/Checkers.tres" id="2_iqcmb"]
 [ext_resource type="Script" uid="uid://c3be8hys1jeik" path="res://Scripts/CameraLookAt.cs" id="3_y1yrn"]
 [ext_resource type="PackedScene" uid="uid://cfyvsp3b5qbb2" path="res://Premade/NextCameraTrigger.tscn" id="4_jyvk6"]
+[ext_resource type="Texture2D" uid="uid://dsyspom63n5xk" path="res://Images/Checkerboard_pattern.svg.png" id="5_2yvdw"]
+[ext_resource type="Shader" uid="uid://botl42vl38o81" path="res://Shaders/CRT.gdshader" id="6_voj1p"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_uib4f"]
 
@@ -21,6 +23,14 @@ fog_sun_scatter = 0.25
 fog_density = 0.1454
 
 [sub_resource type="Compositor" id="Compositor_jyvk6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kxr0u"]
+shader = ExtResource("6_voj1p")
+shader_parameter/crt_brightness = 1.0
+shader_parameter/crt_ghost = 3.0
+shader_parameter/crt_grid = 0.4
+shader_parameter/crt_white_noise = 0.096
+shader_parameter/crt_curve = 0.05
 
 [node name="TestLevel" type="Node3D"]
 
@@ -51,5 +61,23 @@ script = ExtResource("3_y1yrn")
 
 [node name="NextCameraTrigger" parent="." instance=ExtResource("4_jyvk6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0226073, 0.916917, -0.594264)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+scale = Vector2(1.00087, 0.996914)
+texture = ExtResource("5_2yvdw")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 1152, 648)
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_kxr0u")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [editable path="NextCameraTrigger"]
