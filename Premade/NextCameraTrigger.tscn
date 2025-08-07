@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cfyvsp3b5qbb2"]
+
+[ext_resource type="Script" uid="uid://j573rvgbjydt" path="res://Scripts/TriggerCameraSwitch.cs" id="1_bnj58"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y1yrn"]
+
+[node name="NextCameraTrigger" type="Area3D" node_paths=PackedStringArray("targetCameraSwitch")]
+input_ray_pickable = false
+script = ExtResource("1_bnj58")
+targetCameraSwitch = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_y1yrn")
