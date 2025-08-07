@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://cw2p0l6uq878j"]
+
+[ext_resource type="Shader" uid="uid://botl42vl38o81" path="res://Shaders/CRT.gdshader" id="1_yw2i3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hr4vk"]
+shader = ExtResource("1_yw2i3")
+shader_parameter/crt_brightness = 1.0
+shader_parameter/crt_ghost = 0.404
+shader_parameter/crt_grid = 0.4
+shader_parameter/crt_white_noise = 0.05
+shader_parameter/crt_curve = 0.05
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 440.0
+offset_top = 75.0
+offset_right = -521.0
+offset_bottom = -529.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Start"
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_hr4vk")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
