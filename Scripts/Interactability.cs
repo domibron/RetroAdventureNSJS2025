@@ -17,7 +17,7 @@ public partial class Interactability : Area3D
 		shape.Radius = interactionRadius;
 	}
 	
-	public void Interact()
+	public virtual void Interact()
 	{
 		GD.Print("Interacted with: " + name);
 		timesInteracted++;

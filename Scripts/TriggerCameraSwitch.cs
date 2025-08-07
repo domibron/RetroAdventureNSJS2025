@@ -10,8 +10,10 @@ public partial class TriggerCameraSwitch : Area3D
 
 	public override void _Process(double delta)
 	{
+		
 		if (HasOverlappingBodies())
 		{
+			
 			Godot.Collections.Array<Node3D> bodies = GetOverlappingBodies();
 
 			foreach (Node3D node in bodies)

@@ -4,10 +4,10 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y1yrn"]
 
-[node name="NextCameraTrigger" type="Area3D" node_paths=PackedStringArray("targetCameraSwitch")]
+[node name="NextCameraTrigger" type="Area3D"]
 input_ray_pickable = false
 script = ExtResource("1_bnj58")
-targetCameraSwitch = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_y1yrn")
+debug_color = Color(0.98789, 1.45355e-05, 0.654542, 1)
