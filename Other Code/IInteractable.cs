@@ -1,4 +1,0 @@
-interface IInteractable
-{
-	void AttemptInteraction();
-}

@@ -1,11 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://grosqh55xk23"]
+[gd_scene load_steps=7 format=3 uid="uid://grosqh55xk23"]
 
 [ext_resource type="PackedScene" uid="uid://csene2x0vvxph" path="res://Premade/PlayerCharacter.tscn" id="1_p85we"]
 [ext_resource type="Script" uid="uid://c3be8hys1jeik" path="res://Scripts/CameraLookAt.cs" id="2_prrav"]
+[ext_resource type="PackedScene" uid="uid://d2cytsefvqqdp" path="res://Premade/Interactability.tscn" id="3_hl06a"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p85we"]
+albedo_color = Color(0.408329, 0.408329, 0.408329, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_pdceh"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_prrav"]
 
 [node name="Main" type="Node3D"]
 
@@ -27,3 +31,9 @@ script = ExtResource("2_prrav")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 23.2276, 0)
 omni_range = 788.112
 omni_attenuation = -0.215
+
+[node name="TestInteractable" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.5, 0)
+mesh = SubResource("PrismMesh_prrav")
+
+[node name="Interactability" parent="TestInteractable" instance=ExtResource("3_hl06a")]
