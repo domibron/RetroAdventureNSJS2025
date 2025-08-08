@@ -1,12 +1,21 @@
 using Godot;
 using System;
 
-public partial class TriggerCameraSwitch : Area3D
+public partial class NextCameraTrigger : Area3D
 {
 	[Export]
 	private Camera3D targetCameraSwitch;
+	
+	[Export]
+	private Vector3 AreaSize = new Vector3(1, 1, 1);
 
 	private bool hasTriggered = false;
+	
+	public override void _Ready()
+	{
+		BoxShape3D triggerBox = (BoxShape3D) GetChild<CollisionShape3D>(0).GetShape();
+		triggerBox.Size = AreaSize;
+	}
 
 	public override void _Process(double delta)
 	{

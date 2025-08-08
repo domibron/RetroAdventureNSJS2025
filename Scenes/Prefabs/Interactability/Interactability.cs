@@ -5,6 +5,7 @@ public partial class Interactability : Area3D
 {
 	[Export]
 	private float interactionRadius = 1;
+	
 	[Export]
 	private string name = "something"; 
 	

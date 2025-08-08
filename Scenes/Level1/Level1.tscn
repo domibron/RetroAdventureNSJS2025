@@ -1,0 +1,60 @@
+[gd_scene load_steps=11 format=3 uid="uid://bfp7el2q6vcta"]
+
+[ext_resource type="Material" uid="uid://cw0l4qxi6sl60" path="res://Resources/Materials/GroundMaterial.tres" id="1_gmjs3"]
+[ext_resource type="PackedScene" uid="uid://cg8dkpbmkaavy" path="res://Scenes/Prefabs/TrackingCamera/TrackingCamera.tscn" id="2_vxb1s"]
+[ext_resource type="PackedScene" uid="uid://csene2x0vvxph" path="res://Scenes/Prefabs/PlayerCharacter/PlayerCharacter.tscn" id="3_vxb1s"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_505pi"]
+
+[sub_resource type="Sky" id="Sky_y1yrn"]
+sky_material = SubResource("ProceduralSkyMaterial_505pi")
+
+[sub_resource type="Environment" id="Environment_2llne"]
+background_mode = 2
+sky = SubResource("Sky_y1yrn")
+fog_light_color = Color(0.442745, 0.476936, 0.530673, 1)
+fog_sun_scatter = 0.25
+fog_density = 0.1454
+
+[sub_resource type="Compositor" id="Compositor_q12u6"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_vxb1s"]
+material = ExtResource("1_gmjs3")
+size = Vector2(100, 100)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_505pi"]
+friction = 0.8
+rough = true
+bounce = 0.1
+absorbent = true
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_gmjs3"]
+points = PackedVector3Array(-50, 0, -50, -50, 0, 50, 50, 0, -50, 50, 0, 50)
+
+[node name="Level1" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_2llne")
+compositor = SubResource("Compositor_q12u6")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.939693, 0.34202, 0, -0.34202, -0.939693, 0, 100, 0)
+light_bake_mode = 1
+
+[node name="PlayerCharacter" parent="." instance=ExtResource("3_vxb1s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
+
+[node name="TrackingCamera" parent="." node_paths=PackedStringArray("trackingTarget") instance=ExtResource("2_vxb1s")]
+transform = Transform3D(1, 0, 0, 0, 0.878817, 0.477159, 0, -0.477159, 0.878817, 0, 15, 30)
+fov = 50.0
+trackingTarget = NodePath("../PlayerCharacter")
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_vxb1s")
+skeleton = NodePath("StaticBody3D")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
+physics_material_override = SubResource("PhysicsMaterial_505pi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_gmjs3")

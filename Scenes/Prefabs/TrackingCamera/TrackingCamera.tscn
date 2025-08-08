@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cg8dkpbmkaavy"]
+
+[ext_resource type="Script" uid="uid://c3be8hys1jeik" path="res://Scenes/Prefabs/TrackingCamera/TrackingCamera.cs" id="1_jv1lv"]
+
+[node name="TrackingCamera" type="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 0.878817, 0.477159, 0, -0.477159, 0.878817, 0, 0, 0)
+current = true
+fov = 20.0
+script = ExtResource("1_jv1lv")

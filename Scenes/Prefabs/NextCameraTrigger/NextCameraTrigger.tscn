@@ -1,12 +1,14 @@
 [gd_scene load_steps=3 format=3 uid="uid://cfyvsp3b5qbb2"]
 
-[ext_resource type="Script" uid="uid://j573rvgbjydt" path="res://Scripts/TriggerCameraSwitch.cs" id="1_bnj58"]
+[ext_resource type="Script" uid="uid://j573rvgbjydt" path="res://Scenes/Prefabs/NextCameraTrigger/NextCameraTrigger.cs" id="1_41qhk"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y1yrn"]
 
 [node name="NextCameraTrigger" type="Area3D"]
+collision_layer = 0
+collision_mask = 2
 input_ray_pickable = false
-script = ExtResource("1_bnj58")
+script = ExtResource("1_41qhk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_y1yrn")

@@ -1,12 +1,14 @@
 [gd_scene load_steps=3 format=3 uid="uid://d2cytsefvqqdp"]
 
-[ext_resource type="Script" uid="uid://dg7fahr55fn80" path="res://Scripts/Interactability.cs" id="1_rrtg6"]
+[ext_resource type="Script" uid="uid://dg7fahr55fn80" path="res://Scenes/Prefabs/Interactability/Interactability.cs" id="1_rrtg6"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_180jc"]
 resource_local_to_scene = true
 radius = 1.0
 
 [node name="Interactability" type="Area3D"]
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("1_rrtg6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

@@ -12,9 +12,17 @@ config_version=5
 
 config/name="NSJS2025Adventure"
 config/version="0.0.1"
-run/main_scene="uid://bw1ak5mkp1t8v"
+run/main_scene="uid://dboo0ows7ixo4"
 config/features=PackedStringArray("4.4", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1024
+window/size/viewport_height=768
+window/size/resizable=false
+window/size/borderless=true
+window/stretch/mode="viewport"
 
 [dotnet]
 
@@ -52,8 +60,10 @@ Interact={
 
 [layer_names]
 
-3d_physics/layer_1="InteractableObjects"
+3d_physics/layer_1="PhysicalCollision"
 3d_physics/layer_2="Player"
+3d_physics/layer_3="Interactables"
+3d_physics/layer_4="CameraTriggers"
 
 [rendering]
 

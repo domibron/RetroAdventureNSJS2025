@@ -3,10 +3,13 @@ using System;
 
 public partial class PlayerCharacter : CharacterBody3D
 {
+	[Export]
+	private float movementSpeed = 1;
+	
 	private Vector3 movementVector;
 
 	private Camera3D currentCamera;
-	private CameraLookAt cameraLookAt;
+	private TrackingCamera trackingCamera;
 	
 	private Area3D interactionArea;
 	
@@ -20,7 +23,7 @@ public partial class PlayerCharacter : CharacterBody3D
 		if (currentCamera != GetViewport().GetCamera3D())
 		{
 			currentCamera = GetViewport().GetCamera3D();
-			cameraLookAt = currentCamera as CameraLookAt;
+			trackingCamera = currentCamera as TrackingCamera;
 
 		}
 
@@ -31,14 +34,14 @@ public partial class PlayerCharacter : CharacterBody3D
 
 
 		// we can get a leveled movement direction.
-		movementVector = cameraLookAt.CameraStartTransform.Basis.X * inputVector.X + cameraLookAt.CameraStartTransform.Basis.Z * inputVector.Z;
+		movementVector = trackingCamera.CameraStartTransform.Basis.X * inputVector.X + trackingCamera.CameraStartTransform.Basis.Z * inputVector.Z;
 		
 		HandleInteraction();
 	}
 
 	public override void _PhysicsProcess(double delta)
 	{
-		Velocity = movementVector;
+		Velocity = movementVector * movementSpeed;
 		MoveAndSlide();
 	}
 	
