@@ -4,6 +4,18 @@ using System;
 public partial class TrackingCamera : Camera3D
 {
 	[Export]
+	private float minDistance = 5f;
+
+    [Export]
+    private float minFOV = 1f;
+
+    [Export]
+	private float maxFOV = 120f;
+
+	[Export]
+	private float offsetFromCenter = 10f;
+
+    [Export]
 	private Node3D trackingTarget;
 
 	public Transform3D CameraStartTransform;
@@ -26,5 +38,23 @@ public partial class TrackingCamera : Camera3D
 
 		Transform = newTransform;
 
-	}
+
+		float distance = trackingTarget.GlobalPosition.DistanceTo(GlobalPosition);
+
+
+        if (distance <= minDistance)
+        {
+			distance = minDistance;
+        }
+
+		
+		Fov = Mathf.Clamp(Mathf.RadToDeg(Mathf.Atan(offsetFromCenter / distance)) * 2f, (minFOV < 1f ? 1f : minFOV), (maxFOV > 179f ? 179f : maxFOV));
+
+    }
+
+	//private float Distance(Vector3 a, Vector3 b)
+	//{
+		
+	//	return Mathf.Sqrt(Mathf.Pow((a.X - b.X), 2f) + Mathf.Pow((a.Y - b.Y), 2f) + Mathf.Pow((a.Z - b.Z), 2f));
+	//}
 }
