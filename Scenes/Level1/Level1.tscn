@@ -1,42 +1,117 @@
-[gd_scene load_steps=11 format=3 uid="uid://bfp7el2q6vcta"]
+[gd_scene load_steps=33 format=3 uid="uid://bfp7el2q6vcta"]
 
 [ext_resource type="Material" uid="uid://cw0l4qxi6sl60" path="res://Resources/Materials/GroundMaterial.tres" id="1_gmjs3"]
+[ext_resource type="PackedScene" uid="uid://cfyvsp3b5qbb2" path="res://Scenes/Prefabs/NextCameraTrigger/NextCameraTrigger.tscn" id="2_iil5s"]
 [ext_resource type="PackedScene" uid="uid://cg8dkpbmkaavy" path="res://Scenes/Prefabs/TrackingCamera/TrackingCamera.tscn" id="2_vxb1s"]
+[ext_resource type="Material" uid="uid://dtlhbqqo66e32" path="res://Resources/Materials/BuildingMaterial0.tres" id="3_teab5"]
+[ext_resource type="Material" uid="uid://b133r7xlfhttl" path="res://Resources/Materials/PavementMaterial.tres" id="3_ti6lw"]
 [ext_resource type="PackedScene" uid="uid://csene2x0vvxph" path="res://Scenes/Prefabs/PlayerCharacter/PlayerCharacter.tscn" id="3_vxb1s"]
+[ext_resource type="Material" uid="uid://rfq71kp2afig" path="res://Resources/Materials/PoleMaterial.tres" id="5_hbmps"]
+[ext_resource type="Material" uid="uid://vxbhr6xqxnsd" path="res://Resources/Materials/BuildingMaterial1.tres" id="5_hluqf"]
+[ext_resource type="Material" uid="uid://f2js43xucumd" path="res://Resources/Materials/BuildingMaterial2.tres" id="6_hrs7e"]
+[ext_resource type="Material" uid="uid://dn88ufvru8io7" path="res://Resources/Materials/BuildingMaterial3.tres" id="8_f4xp5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_505pi"]
-sky_top_color = Color(0.607424, 0.621259, 0.617865, 1)
-sky_horizon_color = Color(0.11669, 0.0565964, 0.109089, 1)
-ground_bottom_color = Color(0.137088, 0.00712694, 1.20327e-08, 1)
-ground_horizon_color = Color(0.0740947, 0.0197121, 6.01634e-09, 1)
+ground_bottom_color = Color(0.0590545, 0.0450471, 0.029574, 1)
+ground_horizon_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Sky" id="Sky_y1yrn"]
 sky_material = SubResource("ProceduralSkyMaterial_505pi")
 
 [sub_resource type="Environment" id="Environment_2llne"]
 background_mode = 2
-background_energy_multiplier = 0.8
 sky = SubResource("Sky_y1yrn")
 ambient_light_color = Color(0.29219, 0.29219, 0.29219, 1)
 ambient_light_sky_contribution = 0.5
-fog_light_color = Color(0.442745, 0.476936, 0.530673, 1)
-fog_sun_scatter = 0.25
-fog_density = 0.1454
+fog_enabled = true
+fog_sun_scatter = 0.5
+fog_density = 0.003
+fog_sky_affect = 0.3
 
 [sub_resource type="Compositor" id="Compositor_q12u6"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_vxb1s"]
 material = ExtResource("1_gmjs3")
-size = Vector2(100, 100)
+size = Vector2(80, 150)
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_505pi"]
-friction = 0.8
-rough = true
-bounce = 0.1
-absorbent = true
+[sub_resource type="BoxMesh" id="BoxMesh_ti6lw"]
+material = ExtResource("3_ti6lw")
+size = Vector3(30, 0.3, 65)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_gmjs3"]
-points = PackedVector3Array(-50, 0, -50, -50, 0, 50, 50, 0, -50, 50, 0, 50)
+[sub_resource type="BoxMesh" id="BoxMesh_vxb1s"]
+material = ExtResource("3_teab5")
+size = Vector3(22, 50, 20)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hbmps"]
+material = ExtResource("3_teab5")
+size = Vector3(0.5, 3, 2.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_teab5"]
+material = ExtResource("3_teab5")
+size = Vector3(20, 30, 18)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hluqf"]
+material = ExtResource("6_hrs7e")
+size = Vector3(20, 15, 12)
+
+[sub_resource type="PrismMesh" id="PrismMesh_ti6lw"]
+material = ExtResource("3_teab5")
+size = Vector3(13, 8, 21)
+
+[sub_resource type="BoxMesh" id="BoxMesh_iil5s"]
+material = ExtResource("5_hluqf")
+size = Vector3(24, 19, 38)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hrs7e"]
+material = ExtResource("5_hluqf")
+size = Vector3(11, 5, 9)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_hluqf"]
+material = ExtResource("8_f4xp5")
+top_radius = 4.0
+bottom_radius = 4.0
+height = 8.0
+radial_segments = 16
+cap_bottom = false
+
+[sub_resource type="BoxMesh" id="BoxMesh_wh88m"]
+material = ExtResource("3_teab5")
+size = Vector3(22, 80, 28)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ti6lw"]
+material = ExtResource("5_hbmps")
+top_radius = 0.3
+bottom_radius = 0.25
+height = 15.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_csbps"]
+size = Vector3(2, 30, 150)
+
+[sub_resource type="BoxMesh" id="BoxMesh_kjobb"]
+size = Vector3(80, 30, 2)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_hrs7e"]
+material = ExtResource("8_f4xp5")
+top_radius = 0.4
+bottom_radius = 0.35
+height = 1.0
+radial_segments = 8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iil5s"]
+albedo_color = Color(0, 0, 1, 1)
+roughness = 0.0
+emission = Color(0.0783794, 0, 0.760269, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_f4xp5"]
+material = SubResource("StandardMaterial3D_iil5s")
+size = Vector3(180, 2500, 120)
+
+[sub_resource type="TorusMesh" id="TorusMesh_iil5s"]
+material = ExtResource("3_ti6lw")
+inner_radius = 500.0
+outer_radius = 530.0
+rings = 32
+ring_segments = 16
 
 [node name="Level1" type="Node3D"]
 
@@ -47,31 +122,191 @@ environment = SubResource("Environment_2llne")
 compositor = SubResource("Compositor_q12u6")
 
 [node name="Sun" type="DirectionalLight3D" parent="Environment&Light"]
-transform = Transform3D(1, 0, 0, 0, -0.939693, 0.34202, 0, -0.34202, -0.939693, 0, 50, 0)
-light_color = Color(1, 0.712943, 0.625525, 1)
-light_energy = 2.0
+transform = Transform3D(-0.978148, -0.0976086, 0.183575, 0, 0.882948, 0.469472, -0.207912, 0.459213, -0.863653, 0, 200, 0)
 light_specular = 0.2
 light_bake_mode = 1
 shadow_enabled = true
 
 [node name="Cameras" type="Node3D" parent="."]
 
-[node name="TrackingCamera" parent="Cameras" node_paths=PackedStringArray("trackingTarget") instance=ExtResource("2_vxb1s")]
-transform = Transform3D(1, 0, 0, 0, 0.878817, 0.477159, 0, -0.477159, 0.878817, 0, 15, 30)
+[node name="Cam0" parent="Cameras" node_paths=PackedStringArray("trackingTarget") instance=ExtResource("2_vxb1s")]
+transform = Transform3D(0.642788, -0.365525, 0.673213, 0, 0.878817, 0.477159, -0.766044, -0.306712, 0.564893, 11, 15, 74)
 fov = 50.0
 trackingTarget = NodePath("../../PlayerCharacter")
 
-[node name="PhysicalWorld" type="Node3D" parent="."]
+[node name="Cam1" parent="Cameras" node_paths=PackedStringArray("trackingTarget") instance=ExtResource("2_vxb1s")]
+transform = Transform3D(0.642788, -0.365525, 0.673213, 0, 0.878817, 0.477159, -0.766044, -0.306712, 0.564893, -12, 15, -12)
+current = false
+fov = 50.0
+offsetFromCenter = 18.0
+trackingTarget = NodePath("../../PlayerCharacter")
 
-[node name="Ground" type="MeshInstance3D" parent="PhysicalWorld"]
+[node name="NextCameraTrigger" parent="Cameras" instance=ExtResource("2_iil5s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.09046, 0)
+
+[node name="Foreground" type="Node3D" parent="."]
+
+[node name="Ground" type="MeshInstance3D" parent="Foreground"]
 mesh = SubResource("PlaneMesh_vxb1s")
-skeleton = NodePath("StaticBody3D")
+skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="PhysicalWorld/Ground"]
-physics_material_override = SubResource("PhysicsMaterial_505pi")
+[node name="Pavement" type="Node3D" parent="Foreground"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PhysicalWorld/Ground/StaticBody3D"]
-shape = SubResource("ConvexPolygonShape3D_gmjs3")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Foreground/Pavement"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0.15, 42.5)
+mesh = SubResource("BoxMesh_ti6lw")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Foreground/Pavement"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0.15, 42.5)
+mesh = SubResource("BoxMesh_ti6lw")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Foreground/Pavement"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0.15, -42.5)
+mesh = SubResource("BoxMesh_ti6lw")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Foreground/Pavement"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0.15, -42.5)
+mesh = SubResource("BoxMesh_ti6lw")
+
+[node name="Building0" type="MeshInstance3D" parent="Foreground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29, 25, 63)
+mesh = SubResource("BoxMesh_vxb1s")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Foreground/Building0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, -23.5, 0)
+mesh = SubResource("BoxMesh_hbmps")
+
+[node name="Building1" type="MeshInstance3D" parent="Foreground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 15, 43.5)
+mesh = SubResource("BoxMesh_teab5")
+
+[node name="Building2" type="MeshInstance3D" parent="Foreground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 7.5, 28)
+mesh = SubResource("BoxMesh_hluqf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Foreground/Building2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 11.5, 0)
+mesh = SubResource("PrismMesh_ti6lw")
+
+[node name="Building3" type="MeshInstance3D" parent="Foreground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 7.5, 65)
+mesh = SubResource("BoxMesh_hluqf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Foreground/Building3"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 11.5, 0)
+mesh = SubResource("PrismMesh_ti6lw")
+
+[node name="Building4" type="MeshInstance3D" parent="Foreground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 9, 34)
+mesh = SubResource("BoxMesh_iil5s")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Foreground/Building4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 12, 7)
+mesh = SubResource("BoxMesh_hrs7e")
+
+[node name="Building5" type="MeshInstance3D" parent="Foreground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 4, 17)
+mesh = SubResource("CylinderMesh_hluqf")
+
+[node name="Building12" type="MeshInstance3D" parent="Foreground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33, 4, -52)
+mesh = SubResource("CylinderMesh_hluqf")
+
+[node name="Building15" type="MeshInstance3D" parent="Foreground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33, 4, -64)
+mesh = SubResource("CylinderMesh_hluqf")
+
+[node name="Building13" type="MeshInstance3D" parent="Foreground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 4, -52)
+mesh = SubResource("CylinderMesh_hluqf")
+
+[node name="Building14" type="MeshInstance3D" parent="Foreground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 4, -64)
+mesh = SubResource("CylinderMesh_hluqf")
+
+[node name="Building6" type="MeshInstance3D" parent="Foreground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33, 4, 17)
+mesh = SubResource("CylinderMesh_hluqf")
+
+[node name="Building7" type="MeshInstance3D" parent="Foreground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 7.5, -24)
+mesh = SubResource("BoxMesh_hluqf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Foreground/Building7"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 11.5, 0)
+mesh = SubResource("PrismMesh_ti6lw")
+
+[node name="Building8" type="MeshInstance3D" parent="Foreground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 7.5, -37)
+mesh = SubResource("BoxMesh_hluqf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Foreground/Building8"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 11.5, 0)
+mesh = SubResource("PrismMesh_ti6lw")
+
+[node name="Building9" type="MeshInstance3D" parent="Foreground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 7.5, -50)
+mesh = SubResource("BoxMesh_hluqf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Foreground/Building9"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 11.5, 0)
+mesh = SubResource("PrismMesh_ti6lw")
+
+[node name="Building10" type="MeshInstance3D" parent="Foreground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 7.5, -63)
+mesh = SubResource("BoxMesh_hluqf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Foreground/Building10"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 11.5, 0)
+mesh = SubResource("PrismMesh_ti6lw")
+
+[node name="Building11" type="MeshInstance3D" parent="Foreground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29, 40, -30)
+mesh = SubResource("BoxMesh_wh88m")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Foreground/Building11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, -23.5, 0)
+mesh = SubResource("BoxMesh_hbmps")
+
+[node name="Pole0" type="MeshInstance3D" parent="Foreground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 7.5, 74)
+mesh = SubResource("CylinderMesh_ti6lw")
+skeleton = NodePath("../../Cameras/Cam1")
+
+[node name="Pole1" type="MeshInstance3D" parent="Foreground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 7.5, -12)
+mesh = SubResource("CylinderMesh_ti6lw")
+skeleton = NodePath("../../Cameras/Cam1")
+
+[node name="Wall" type="MeshInstance3D" parent="Foreground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41, 15, 0)
+mesh = SubResource("BoxMesh_csbps")
+
+[node name="Wall2" type="MeshInstance3D" parent="Foreground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41, 15, 0)
+mesh = SubResource("BoxMesh_csbps")
+
+[node name="Wall3" type="MeshInstance3D" parent="Foreground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, 76)
+mesh = SubResource("BoxMesh_kjobb")
+
+[node name="Wall4" type="MeshInstance3D" parent="Foreground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, -76)
+mesh = SubResource("BoxMesh_kjobb")
+
+[node name="Bin" type="MeshInstance3D" parent="Foreground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0.8, -12)
+mesh = SubResource("CylinderMesh_hrs7e")
+
+[node name="Background" type="Node3D" parent="."]
+
+[node name="Citadel" type="MeshInstance3D" parent="Background"]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 0, 1250, -1200)
+mesh = SubResource("BoxMesh_f4xp5")
+
+[node name="Overpass" type="MeshInstance3D" parent="Background"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 247, 60, 352)
+mesh = SubResource("TorusMesh_iil5s")
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("3_vxb1s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, 64)

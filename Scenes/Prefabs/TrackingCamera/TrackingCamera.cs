@@ -6,24 +6,22 @@ public partial class TrackingCamera : Camera3D
 	[Export]
 	private float minDistance = 5f;
 
-    [Export]
-    private float minFOV = 1f;
+	[Export]
+	private float minFOV = 1f;
 
-    [Export]
+	[Export]
 	private float maxFOV = 120f;
 
 	[Export]
 	private float offsetFromCenter = 10f;
 
-    [Export]
+	[Export]
 	private Node3D trackingTarget;
 
 	public Transform3D CameraStartTransform;
 
 	public override void _Ready()
 	{
-		//trackingTarget = GetNode<Node3D>("../PlayerCharacter");
-		
 		Node3D calc = this;
 
 		// reset the rotation of the camera.
@@ -42,15 +40,15 @@ public partial class TrackingCamera : Camera3D
 		float distance = trackingTarget.GlobalPosition.DistanceTo(GlobalPosition);
 
 
-        if (distance <= minDistance)
-        {
+		if (distance < minDistance)
+		{
 			distance = minDistance;
-        }
+		}
 
 		
 		Fov = Mathf.Clamp(Mathf.RadToDeg(Mathf.Atan(offsetFromCenter / distance)) * 2f, (minFOV < 1f ? 1f : minFOV), (maxFOV > 179f ? 179f : maxFOV));
 
-    }
+	}
 
 	//private float Distance(Vector3 a, Vector3 b)
 	//{
