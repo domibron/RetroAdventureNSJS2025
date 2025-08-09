@@ -49,17 +49,13 @@ compositor = SubResource("Compositor_jyvk6")
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.881298, -0.171073, 0.440509, 0.0298535, 0.950466, 0.309391, -0.471617, -0.259515, 0.842751, 4.04628, 3.36585, 4.08133)
 current = true
-fov = 84.5625
-script = ExtResource("3_y1yrn")
-
-[node name="Camera3D3" type="Camera3D" parent="."]
-transform = Transform3D(-0.412008, -0.073205, -0.908235, -0.028005, 0.997314, -0.0676808, 0.91075, -0.00244997, -0.412951, -4.6569, 0.854741, -4.53392)
+fov = 132.1
 script = ExtResource("3_y1yrn")
 
 [node name="NextCameraTrigger" parent="." node_paths=PackedStringArray("targetCameraSwitch") instance=ExtResource("4_jyvk6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0226073, 0.916917, -0.594264)
 collision_layer = 4
-targetCameraSwitch = NodePath("../Camera3D3")
+targetCameraSwitch = NodePath("")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
