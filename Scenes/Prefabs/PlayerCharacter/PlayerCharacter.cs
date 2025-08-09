@@ -4,7 +4,10 @@ using System;
 public partial class PlayerCharacter : CharacterBody3D
 {
 	[Export]
-	private float movementSpeed = 1;
+	private float walkSpeed = 3;
+	[Export]
+	private float sprintSpeed = 12;
+	
 	
 	private Vector3 movementVector;
 
@@ -41,7 +44,7 @@ public partial class PlayerCharacter : CharacterBody3D
 
 	public override void _PhysicsProcess(double delta)
 	{
-		Velocity = movementVector * movementSpeed;
+		Velocity = movementVector * walkSpeed;
 		MoveAndSlide();
 	}
 	

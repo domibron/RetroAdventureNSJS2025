@@ -5,13 +5,20 @@
 [ext_resource type="PackedScene" uid="uid://csene2x0vvxph" path="res://Scenes/Prefabs/PlayerCharacter/PlayerCharacter.tscn" id="3_vxb1s"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_505pi"]
+sky_top_color = Color(0.607424, 0.621259, 0.617865, 1)
+sky_horizon_color = Color(0.11669, 0.0565964, 0.109089, 1)
+ground_bottom_color = Color(0.137088, 0.00712694, 1.20327e-08, 1)
+ground_horizon_color = Color(0.0740947, 0.0197121, 6.01634e-09, 1)
 
 [sub_resource type="Sky" id="Sky_y1yrn"]
 sky_material = SubResource("ProceduralSkyMaterial_505pi")
 
 [sub_resource type="Environment" id="Environment_2llne"]
 background_mode = 2
+background_energy_multiplier = 0.8
 sky = SubResource("Sky_y1yrn")
+ambient_light_color = Color(0.29219, 0.29219, 0.29219, 1)
+ambient_light_sky_contribution = 0.5
 fog_light_color = Color(0.442745, 0.476936, 0.530673, 1)
 fog_sun_scatter = 0.25
 fog_density = 0.1454
@@ -33,28 +40,38 @@ points = PackedVector3Array(-50, 0, -50, -50, 0, 50, 50, 0, -50, 50, 0, 50)
 
 [node name="Level1" type="Node3D"]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="Environment&Light" type="Node" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment&Light"]
 environment = SubResource("Environment_2llne")
 compositor = SubResource("Compositor_q12u6")
 
-[node name="Sun" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.939693, 0.34202, 0, -0.34202, -0.939693, 0, 100, 0)
+[node name="Sun" type="DirectionalLight3D" parent="Environment&Light"]
+transform = Transform3D(1, 0, 0, 0, -0.939693, 0.34202, 0, -0.34202, -0.939693, 0, 50, 0)
+light_color = Color(1, 0.712943, 0.625525, 1)
+light_energy = 2.0
+light_specular = 0.2
 light_bake_mode = 1
+shadow_enabled = true
 
-[node name="PlayerCharacter" parent="." instance=ExtResource("3_vxb1s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
+[node name="Cameras" type="Node3D" parent="."]
 
-[node name="TrackingCamera" parent="." node_paths=PackedStringArray("trackingTarget") instance=ExtResource("2_vxb1s")]
+[node name="TrackingCamera" parent="Cameras" node_paths=PackedStringArray("trackingTarget") instance=ExtResource("2_vxb1s")]
 transform = Transform3D(1, 0, 0, 0, 0.878817, 0.477159, 0, -0.477159, 0.878817, 0, 15, 30)
 fov = 50.0
-trackingTarget = NodePath("../PlayerCharacter")
+trackingTarget = NodePath("../../PlayerCharacter")
 
-[node name="Ground" type="MeshInstance3D" parent="."]
+[node name="PhysicalWorld" type="Node3D" parent="."]
+
+[node name="Ground" type="MeshInstance3D" parent="PhysicalWorld"]
 mesh = SubResource("PlaneMesh_vxb1s")
 skeleton = NodePath("StaticBody3D")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
+[node name="StaticBody3D" type="StaticBody3D" parent="PhysicalWorld/Ground"]
 physics_material_override = SubResource("PhysicsMaterial_505pi")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PhysicalWorld/Ground/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_gmjs3")
+
+[node name="PlayerCharacter" parent="." instance=ExtResource("3_vxb1s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)

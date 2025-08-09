@@ -14,7 +14,6 @@ radius = 0.75
 [node name="PlayerCharacter" type="CharacterBody3D"]
 collision_layer = 3
 script = ExtResource("1_uyg48")
-movementSpeed = 5.0
 
 [node name="CharacterCollider" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00921202, 0.0103493, -0.00611973)
@@ -29,8 +28,10 @@ collision_mask = 4
 shape = SubResource("CylinderShape3D_ga4px")
 
 [node name="CharacterMesh" type="MeshInstance3D" parent="."]
+gi_mode = 2
 mesh = SubResource("CapsuleMesh_uyg48")
 
 [node name="FrontFaceIndicator" type="MeshInstance3D" parent="CharacterMesh"]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0.8, 0.3)
+gi_mode = 2
 mesh = SubResource("SphereMesh_xmeow")

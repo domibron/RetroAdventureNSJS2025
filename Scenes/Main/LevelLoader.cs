@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class World : Node3D
+public partial class LevelLoader : Node3D
 {
 	private PackedScene currentPackedScene;
 	

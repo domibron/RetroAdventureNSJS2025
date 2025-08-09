@@ -2,20 +2,20 @@
 
 [ext_resource type="Script" uid="uid://d2kl1m4m00e18" path="res://Scenes/Main/Main.cs" id="1_lxy7q"]
 [ext_resource type="Shader" uid="uid://botl42vl38o81" path="res://Resources/Shaders/CRT.gdshader" id="2_83ytx"]
-[ext_resource type="Script" uid="uid://c12h31yp7w55v" path="res://Scenes/Main/World.cs" id="2_ps1la"]
+[ext_resource type="Script" uid="uid://c12h31yp7w55v" path="res://Scenes/Main/LevelLoader.cs" id="2_ps1la"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_amygn"]
 shader = ExtResource("2_83ytx")
 shader_parameter/crt_brightness = 1.0
 shader_parameter/crt_ghost = 0.404
 shader_parameter/crt_grid = 0.4
-shader_parameter/crt_white_noise = 0.05
+shader_parameter/crt_white_noise = 0.2
 shader_parameter/crt_curve = 0.05
 
 [node name="Main" type="Node"]
 script = ExtResource("1_lxy7q")
 
-[node name="World" type="Node3D" parent="."]
+[node name="LevelLoader" type="Node3D" parent="."]
 script = ExtResource("2_ps1la")
 
 [node name="GUI" type="Control" parent="."]

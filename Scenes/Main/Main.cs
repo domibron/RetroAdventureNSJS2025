@@ -22,7 +22,7 @@ public partial class Main : Node
 	
 	private void StartGame()
 	{
-		GetNode<World>("World").Load(startLevel);
+		GetNode<LevelLoader>("LevelLoader").Load(startLevel);
 	}
 	
 }

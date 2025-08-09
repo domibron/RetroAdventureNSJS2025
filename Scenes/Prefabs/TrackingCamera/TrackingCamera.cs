@@ -10,7 +10,7 @@ public partial class TrackingCamera : Camera3D
 
 	public override void _Ready()
 	{
-		trackingTarget = GetNode<Node3D>("../PlayerCharacter");
+		//trackingTarget = GetNode<Node3D>("../PlayerCharacter");
 		
 		Node3D calc = this;
 
