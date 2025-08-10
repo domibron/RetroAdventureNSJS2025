@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cc5swlo687nvc"]
+
+[ext_resource type="Script" uid="uid://ctgc1vtdfoe12" path="res://Scenes/# Prefabs/CameraZoning/CameraZoning.cs" id="1_hn6w8"]
+
+[node name="CameraZoning" type="Node"]
+script = ExtResource("1_hn6w8")

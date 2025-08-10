@@ -12,7 +12,7 @@ public partial class TrackingCamera : Camera3D
 	[Export]
 	private float offsetFromCenter = 10f;
 	[Export]
-	private Node3D trackingTarget;
+	public Node3D TrackingTarget;
 
 	public Transform3D CameraStartTransform;
 
@@ -28,12 +28,12 @@ public partial class TrackingCamera : Camera3D
 
 	public override void _Process(double delta)
 	{
-		Transform3D newTransform = Transform.LookingAt(trackingTarget.GlobalPosition);
+		Transform3D newTransform = Transform.LookingAt(TrackingTarget.GlobalPosition);
 
 		Transform = newTransform;
 
 
-		float distance = trackingTarget.GlobalPosition.DistanceTo(GlobalPosition);
+		float distance = TrackingTarget.GlobalPosition.DistanceTo(GlobalPosition);
 
 
 		if (distance < minDistance)

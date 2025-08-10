@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://grosqh55xk23"]
 
-[ext_resource type="PackedScene" uid="uid://csene2x0vvxph" path="res://Scenes/Prefabs/PlayerCharacter/PlayerCharacter.tscn" id="1_p85we"]
-[ext_resource type="Script" uid="uid://c3be8hys1jeik" path="res://Scenes/Prefabs/TrackingCamera/TrackingCamera.cs" id="2_prrav"]
-[ext_resource type="PackedScene" uid="uid://d2cytsefvqqdp" path="res://Scenes/Prefabs/Interactability/Interactability.tscn" id="3_hl06a"]
+[ext_resource type="PackedScene" uid="uid://csene2x0vvxph" path="res://Scenes/# Prefabs/PlayerCharacter/PlayerCharacter.tscn" id="1_p85we"]
+[ext_resource type="Script" uid="uid://c3be8hys1jeik" path="res://Scenes/# Prefabs/TrackingCamera/TrackingCamera.cs" id="2_prrav"]
+[ext_resource type="PackedScene" uid="uid://d2cytsefvqqdp" path="res://Scenes/# Prefabs/Interactability/Interactability.tscn" id="3_hl06a"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p85we"]
 albedo_color = Color(0.408329, 0.408329, 0.408329, 1)

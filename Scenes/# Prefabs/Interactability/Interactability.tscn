@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://d2cytsefvqqdp"]
 
-[ext_resource type="Script" uid="uid://dg7fahr55fn80" path="res://Scenes/Prefabs/Interactability/Interactability.cs" id="1_rrtg6"]
+[ext_resource type="Script" uid="uid://dg7fahr55fn80" path="res://Scenes/# Prefabs/Interactability/Interactability.cs" id="1_rrtg6"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_180jc"]
 resource_local_to_scene = true

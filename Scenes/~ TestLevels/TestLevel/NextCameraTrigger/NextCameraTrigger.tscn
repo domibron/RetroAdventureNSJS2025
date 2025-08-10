@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cfyvsp3b5qbb2"]
 
-[ext_resource type="Script" uid="uid://j573rvgbjydt" path="res://Scenes/Prefabs/NextCameraTrigger/NextCameraTrigger.cs" id="1_41qhk"]
+[ext_resource type="Script" uid="uid://j573rvgbjydt" path="res://Scenes/~ TestLevels/TestLevel/NextCameraTrigger/NextCameraTrigger.cs" id="1_41qhk"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y1yrn"]
 

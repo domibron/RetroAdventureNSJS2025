@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://csene2x0vvxph"]
 
-[ext_resource type="Script" uid="uid://djymytd1qqsuu" path="res://Scenes/Prefabs/PlayerCharacter/PlayerCharacter.cs" id="1_uyg48"]
+[ext_resource type="Script" uid="uid://djymytd1qqsuu" path="res://Scenes/# Prefabs/PlayerCharacter/PlayerCharacter.cs" id="1_uyg48"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_e2x7v"]
 

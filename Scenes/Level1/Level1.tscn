@@ -1,15 +1,15 @@
-[gd_scene load_steps=38 format=3 uid="uid://bfp7el2q6vcta"]
+[gd_scene load_steps=45 format=3 uid="uid://bfp7el2q6vcta"]
 
 [ext_resource type="Material" uid="uid://cw0l4qxi6sl60" path="res://Resources/Materials/GroundMaterial.tres" id="1_gmjs3"]
-[ext_resource type="PackedScene" uid="uid://cfyvsp3b5qbb2" path="res://Scenes/Prefabs/NextCameraTrigger/NextCameraTrigger.tscn" id="2_iil5s"]
-[ext_resource type="PackedScene" uid="uid://cg8dkpbmkaavy" path="res://Scenes/Prefabs/TrackingCamera/TrackingCamera.tscn" id="2_vxb1s"]
+[ext_resource type="PackedScene" uid="uid://cg8dkpbmkaavy" path="res://Scenes/# Prefabs/TrackingCamera/TrackingCamera.tscn" id="2_vxb1s"]
 [ext_resource type="Material" uid="uid://dtlhbqqo66e32" path="res://Resources/Materials/BuildingMaterial0.tres" id="3_teab5"]
 [ext_resource type="Material" uid="uid://b133r7xlfhttl" path="res://Resources/Materials/PavementMaterial.tres" id="3_ti6lw"]
-[ext_resource type="PackedScene" uid="uid://csene2x0vvxph" path="res://Scenes/Prefabs/PlayerCharacter/PlayerCharacter.tscn" id="3_vxb1s"]
+[ext_resource type="PackedScene" uid="uid://csene2x0vvxph" path="res://Scenes/# Prefabs/PlayerCharacter/PlayerCharacter.tscn" id="3_vxb1s"]
 [ext_resource type="Material" uid="uid://rfq71kp2afig" path="res://Resources/Materials/PoleMaterial.tres" id="5_hbmps"]
 [ext_resource type="Material" uid="uid://vxbhr6xqxnsd" path="res://Resources/Materials/BuildingMaterial1.tres" id="5_hluqf"]
 [ext_resource type="Material" uid="uid://f2js43xucumd" path="res://Resources/Materials/BuildingMaterial2.tres" id="6_hrs7e"]
 [ext_resource type="Material" uid="uid://dn88ufvru8io7" path="res://Resources/Materials/BuildingMaterial3.tres" id="8_f4xp5"]
+[ext_resource type="PackedScene" uid="uid://cc5swlo687nvc" path="res://Scenes/# Prefabs/CameraZoning/CameraZoning.tscn" id="9_f4xp5"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_vxb1s"]
 material = ExtResource("1_gmjs3")
@@ -84,9 +84,21 @@ height = 15.0
 material = ExtResource("1_gmjs3")
 size = Vector3(2, 30, 150)
 
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_hrs7e"]
+points = PackedVector3Array(-1, -15, -75, 1, -15, -75, -1, -15, 75, -1, 15, -75, 1, 15, -75, 1, -15, 75, -1, 15, 75, 1, 15, 75)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_oy4rq"]
+points = PackedVector3Array(-1, -15, -75, 1, -15, -75, -1, -15, 75, -1, 15, -75, 1, 15, -75, 1, -15, 75, -1, 15, 75, 1, 15, 75)
+
 [sub_resource type="BoxMesh" id="BoxMesh_kjobb"]
 material = ExtResource("1_gmjs3")
 size = Vector3(80, 30, 2)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_xycu6"]
+points = PackedVector3Array(40, 15, 1, 40, 15, -1, -40, 15, 1, 40, -15, 1, 40, -15, -1, -40, 15, -1, -40, -15, 1, -40, -15, -1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_iqq6x"]
+points = PackedVector3Array(40, 15, 1, 40, 15, -1, -40, 15, 1, 40, -15, 1, 40, -15, -1, -40, 15, -1, -40, -15, 1, -40, -15, -1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_hrs7e"]
 material = ExtResource("8_f4xp5")
@@ -94,6 +106,15 @@ top_radius = 0.4
 bottom_radius = 0.35
 height = 1.0
 radial_segments = 8
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_414dm"]
+points = PackedVector3Array(-0.4, 0.5, 0, -0.28285, 0.5, -0.28285, -0.390055, 0.299922, 0, -0.28285, 0.5, 0.282772, 0, 0.5, -0.4, 0, 0.299922, -0.390055, -0.275803, 0.299922, -0.275803, -0.275803, 0.299922, 0.275724, -0.261707, -0.100039, -0.261707, -0.360063, -0.30002, 0, -0.261707, -0.100039, 0.261629, 0, 0.5, 0.4, 0.282772, 0.5, -0.28285, 0.275724, 0.299922, -0.275803, 0.261629, -0.100039, -0.261707, 0, -0.30002, -0.360063, -0.247533, -0.5, -0.247533, -0.350039, -0.5, 0, -0.247533, -0.5, 0.247455, 0, -0.30002, 0.359984, 0.275724, 0.299922, 0.275724, 0.282772, 0.5, 0.282772, 0.261629, -0.100039, 0.261629, 0.4, 0.5, 0, 0.359984, -0.30002, 0, 0.247455, -0.5, -0.247533, 0, -0.5, -0.350039, 0, -0.5, 0.349961, 0.247455, -0.5, 0.247455, 0.349961, -0.5, 0)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hrs7e"]
+size = Vector3(40, 10, 40)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7q2sj"]
+size = Vector3(100, 10, 50)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_505pi"]
 ground_bottom_color = Color(0.0590545, 0.0450471, 0.029574, 1)
@@ -303,37 +324,77 @@ skeleton = NodePath("../../Cameras/Cam1")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41, 15, 0)
 mesh = SubResource("BoxMesh_csbps")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="Foreground/Wall"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Foreground/Wall/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_hrs7e")
+
 [node name="Wall2" type="MeshInstance3D" parent="Foreground"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41, 15, 0)
 mesh = SubResource("BoxMesh_csbps")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Foreground/Wall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Foreground/Wall2/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_oy4rq")
 
 [node name="Wall3" type="MeshInstance3D" parent="Foreground"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, 76)
 mesh = SubResource("BoxMesh_kjobb")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="Foreground/Wall3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Foreground/Wall3/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_xycu6")
+
 [node name="Wall4" type="MeshInstance3D" parent="Foreground"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, -76)
 mesh = SubResource("BoxMesh_kjobb")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Foreground/Wall4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Foreground/Wall4/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_iqq6x")
 
 [node name="Bin" type="MeshInstance3D" parent="Foreground"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0.8, -12)
 mesh = SubResource("CylinderMesh_hrs7e")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="Foreground/Bin"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Foreground/Bin/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_414dm")
+
 [node name="Cameras" type="Node3D" parent="."]
 
-[node name="Cam0" parent="Cameras" node_paths=PackedStringArray("trackingTarget") instance=ExtResource("2_vxb1s")]
+[node name="Cam0" parent="Cameras" node_paths=PackedStringArray("TrackingTarget") instance=ExtResource("2_vxb1s")]
 transform = Transform3D(0.642788, -0.365525, 0.673213, 0, 0.878817, 0.477159, -0.766044, -0.306712, 0.564893, 11, 15, 74)
 fov = 50.0
-trackingTarget = NodePath("../../PlayerCharacter")
+TrackingTarget = NodePath("../../PlayerCharacter")
 
-[node name="Cam1" parent="Cameras" node_paths=PackedStringArray("trackingTarget") instance=ExtResource("2_vxb1s")]
+[node name="Zone" type="Area3D" parent="Cameras/Cam0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 42)
+top_level = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cameras/Cam0/Zone"]
+shape = SubResource("BoxShape3D_hrs7e")
+
+[node name="CameraZoning" parent="Cameras/Cam0/Zone" instance=ExtResource("9_f4xp5")]
+
+[node name="Cam1" parent="Cameras" node_paths=PackedStringArray("TrackingTarget") instance=ExtResource("2_vxb1s")]
 transform = Transform3D(-0.939693, 0.0885213, -0.330366, 0, 0.965926, 0.258819, 0.34202, 0.24321, -0.907674, -12, 15, -12)
 current = false
 fov = 50.0
-trackingTarget = NodePath("../../PlayerCharacter")
+TrackingTarget = NodePath("../../PlayerCharacter")
 
-[node name="NextCameraTrigger" parent="Cameras" instance=ExtResource("2_iil5s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.09046, 0)
+[node name="Zone" type="Area3D" parent="Cameras/Cam1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -12)
+top_level = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cameras/Cam1/Zone"]
+shape = SubResource("BoxShape3D_7q2sj")
+
+[node name="CameraZoning" parent="Cameras/Cam1/Zone" instance=ExtResource("9_f4xp5")]
 
 [node name="Environment&Light" type="Node" parent="."]
 
