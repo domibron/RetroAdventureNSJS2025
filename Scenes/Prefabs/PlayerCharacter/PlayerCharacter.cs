@@ -4,48 +4,47 @@ using System;
 public partial class PlayerCharacter : CharacterBody3D
 {
 	[Export]
-	private float walkSpeed = 3;
+	private float walkSpeed = 3; // m/s
 	[Export]
-	private float sprintSpeed = 12;
-	
-	
-	private Vector3 movementVector;
+	private float sprintSpeed = 12; // m/s
+	[Export]
+	private float turnSpeed = 60; // degrees/s
 
-	private Camera3D currentCamera;
-	private TrackingCamera trackingCamera;
-	
+	private Vector3 gravity; // m/s^2
 	private Area3D interactionArea;
 	
 	public override void _Ready()
 	{
-		interactionArea = (Area3D) GetChild(1); // Maybe think of a cleaner, less hard-coded way.
-	}
-
-	public override void _Process(double delta)
-	{
-		if (currentCamera != GetViewport().GetCamera3D())
-		{
-			currentCamera = GetViewport().GetCamera3D();
-			trackingCamera = currentCamera as TrackingCamera;
-
-		}
-
-		// movement input vector.
-		Vector3 inputVector = new Vector3(-Input.GetActionStrength("M_Left") + Input.GetActionStrength("M_Right"), 
-			0, 
-			-Input.GetActionStrength("M_Up") + Input.GetActionStrength("M_Down")).Normalized();
-
-
-		// we can get a leveled movement direction.
-		movementVector = trackingCamera.CameraStartTransform.Basis.X * inputVector.X + trackingCamera.CameraStartTransform.Basis.Z * inputVector.Z;
-		
-		HandleInteraction();
+		gravity = (Vector3)ProjectSettings.GetSetting("physics/3d/default_gravity_vector")
+					 * (float)ProjectSettings.GetSetting("physics/3d/default_gravity");
+		interactionArea = GetNode<Area3D>("InteractionArea");
 	}
 
 	public override void _PhysicsProcess(double delta)
 	{
-		Velocity = movementVector * walkSpeed;
+		HandleMovement((float)delta);
+	}
+	
+	private void HandleMovement(float delta)
+	{
+		float move = Input.GetAxis("M_Backwards", "M_Forwards"); // -1..1
+		float turn = Input.GetAxis("M_Right", "M_Left");		 // -1..1
+		Vector3 horizontalMovement = move * Transform.Basis.Z * GetSpeedFactor();
+		
+		RotateY(turn * Mathf.DegToRad(turnSpeed) * delta);
+		
+		Velocity = new Vector3(horizontalMovement.X, gravity.Y, horizontalMovement.Z);
 		MoveAndSlide();
+	}
+	
+	private float GetSpeedFactor()
+	{
+		return (Input.IsActionPressed("Sprint") ? sprintSpeed : walkSpeed);
+	}
+	
+	public override void _Process(double delta)
+	{
+		HandleInteraction();
 	}
 	
 	private void HandleInteraction()
@@ -56,17 +55,17 @@ public partial class PlayerCharacter : CharacterBody3D
 			Interactability interactionTarget;
 			if (potentialInteracts.Count > 1)
 			{
-				interactionTarget = GetClosest(potentialInteracts);
+				interactionTarget = (Interactability)GetClosest(potentialInteracts);
 			}
 			else
 			{
-				interactionTarget = (Interactability) potentialInteracts[0];
+				interactionTarget = (Interactability)potentialInteracts[0];
 			}
 			interactionTarget.Interact();
 		}
 	}
 	
-	private Interactability GetClosest(Godot.Collections.Array<Area3D> potentialInteracts)
+	private Area3D GetClosest(Godot.Collections.Array<Area3D> potentialInteracts)
 	{
 		Area3D currentClosest = potentialInteracts[0];
 		foreach (Area3D interact in potentialInteracts)
@@ -76,6 +75,6 @@ public partial class PlayerCharacter : CharacterBody3D
 				currentClosest = interact;
 			}
 		}
-		return (Interactability) currentClosest;
+		return currentClosest;
 	}
 }

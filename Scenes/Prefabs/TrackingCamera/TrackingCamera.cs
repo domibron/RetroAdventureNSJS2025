@@ -5,16 +5,12 @@ public partial class TrackingCamera : Camera3D
 {
 	[Export]
 	private float minDistance = 5f;
-
 	[Export]
 	private float minFOV = 1f;
-
 	[Export]
 	private float maxFOV = 120f;
-
 	[Export]
 	private float offsetFromCenter = 10f;
-
 	[Export]
 	private Node3D trackingTarget;
 

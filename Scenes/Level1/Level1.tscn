@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://bfp7el2q6vcta"]
+[gd_scene load_steps=38 format=3 uid="uid://bfp7el2q6vcta"]
 
 [ext_resource type="Material" uid="uid://cw0l4qxi6sl60" path="res://Resources/Materials/GroundMaterial.tres" id="1_gmjs3"]
 [ext_resource type="PackedScene" uid="uid://cfyvsp3b5qbb2" path="res://Scenes/Prefabs/NextCameraTrigger/NextCameraTrigger.tscn" id="2_iil5s"]
@@ -11,32 +11,28 @@
 [ext_resource type="Material" uid="uid://f2js43xucumd" path="res://Resources/Materials/BuildingMaterial2.tres" id="6_hrs7e"]
 [ext_resource type="Material" uid="uid://dn88ufvru8io7" path="res://Resources/Materials/BuildingMaterial3.tres" id="8_f4xp5"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_505pi"]
-ground_bottom_color = Color(0.0590545, 0.0450471, 0.029574, 1)
-ground_horizon_color = Color(0, 0, 0, 1)
-
-[sub_resource type="Sky" id="Sky_y1yrn"]
-sky_material = SubResource("ProceduralSkyMaterial_505pi")
-
-[sub_resource type="Environment" id="Environment_2llne"]
-background_mode = 2
-sky = SubResource("Sky_y1yrn")
-ambient_light_color = Color(0.29219, 0.29219, 0.29219, 1)
-ambient_light_sky_contribution = 0.5
-fog_enabled = true
-fog_sun_scatter = 0.5
-fog_density = 0.003
-fog_sky_affect = 0.3
-
-[sub_resource type="Compositor" id="Compositor_q12u6"]
-
 [sub_resource type="PlaneMesh" id="PlaneMesh_vxb1s"]
 material = ExtResource("1_gmjs3")
 size = Vector2(80, 150)
 
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_f4xp5"]
+points = PackedVector3Array(40, 0, 75, -40, 0, 75, 40, 0, -75, -40, 0, -75)
+
 [sub_resource type="BoxMesh" id="BoxMesh_ti6lw"]
 material = ExtResource("3_ti6lw")
 size = Vector3(30, 0.3, 65)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_csbps"]
+points = PackedVector3Array(15, 0.15, 32.5, 15, -0.15, 32.5, 15, 0.15, -32.5, -15, 0.15, 32.5, -15, -0.15, 32.5, 15, -0.15, -32.5, -15, 0.15, -32.5, -15, -0.15, -32.5)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_kjobb"]
+points = PackedVector3Array(15, 0.15, 32.5, 15, -0.15, 32.5, 15, 0.15, -32.5, -15, 0.15, 32.5, -15, -0.15, 32.5, 15, -0.15, -32.5, -15, 0.15, -32.5, -15, -0.15, -32.5)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_wh88m"]
+points = PackedVector3Array(15, 0.15, 32.5, 15, -0.15, 32.5, 15, 0.15, -32.5, -15, 0.15, 32.5, -15, -0.15, 32.5, 15, -0.15, -32.5, -15, 0.15, -32.5, -15, -0.15, -32.5)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_cp8b2"]
+points = PackedVector3Array(15, 0.15, 32.5, 15, -0.15, 32.5, 15, 0.15, -32.5, -15, 0.15, 32.5, -15, -0.15, 32.5, 15, -0.15, -32.5, -15, 0.15, -32.5, -15, -0.15, -32.5)
 
 [sub_resource type="BoxMesh" id="BoxMesh_vxb1s"]
 material = ExtResource("3_teab5")
@@ -85,9 +81,11 @@ bottom_radius = 0.25
 height = 15.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_csbps"]
+material = ExtResource("1_gmjs3")
 size = Vector3(2, 30, 150)
 
 [sub_resource type="BoxMesh" id="BoxMesh_kjobb"]
+material = ExtResource("1_gmjs3")
 size = Vector3(80, 30, 2)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_hrs7e"]
@@ -96,6 +94,30 @@ top_radius = 0.4
 bottom_radius = 0.35
 height = 1.0
 radial_segments = 8
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_505pi"]
+ground_bottom_color = Color(0.0590545, 0.0450471, 0.029574, 1)
+ground_horizon_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Sky" id="Sky_y1yrn"]
+sky_material = SubResource("ProceduralSkyMaterial_505pi")
+
+[sub_resource type="Environment" id="Environment_2llne"]
+background_mode = 2
+sky = SubResource("Sky_y1yrn")
+ambient_light_sky_contribution = 0.5
+fog_enabled = true
+fog_light_energy = 0.8
+fog_sun_scatter = 0.5
+fog_density = 0.003
+fog_sky_affect = 0.4
+fog_height_density = 0.2
+adjustment_enabled = true
+adjustment_brightness = 1.4
+adjustment_contrast = 1.5
+adjustment_saturation = 0.9
+
+[sub_resource type="Compositor" id="Compositor_q12u6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iil5s"]
 albedo_color = Color(0, 0, 1, 1)
@@ -115,34 +137,8 @@ ring_segments = 16
 
 [node name="Level1" type="Node3D"]
 
-[node name="Environment&Light" type="Node" parent="."]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment&Light"]
-environment = SubResource("Environment_2llne")
-compositor = SubResource("Compositor_q12u6")
-
-[node name="Sun" type="DirectionalLight3D" parent="Environment&Light"]
-transform = Transform3D(-0.978148, -0.0976086, 0.183575, 0, 0.882948, 0.469472, -0.207912, 0.459213, -0.863653, 0, 200, 0)
-light_specular = 0.2
-light_bake_mode = 1
-shadow_enabled = true
-
-[node name="Cameras" type="Node3D" parent="."]
-
-[node name="Cam0" parent="Cameras" node_paths=PackedStringArray("trackingTarget") instance=ExtResource("2_vxb1s")]
-transform = Transform3D(0.642788, -0.365525, 0.673213, 0, 0.878817, 0.477159, -0.766044, -0.306712, 0.564893, 11, 15, 74)
-fov = 50.0
-trackingTarget = NodePath("../../PlayerCharacter")
-
-[node name="Cam1" parent="Cameras" node_paths=PackedStringArray("trackingTarget") instance=ExtResource("2_vxb1s")]
-transform = Transform3D(0.642788, -0.365525, 0.673213, 0, 0.878817, 0.477159, -0.766044, -0.306712, 0.564893, -12, 15, -12)
-current = false
-fov = 50.0
-offsetFromCenter = 18.0
-trackingTarget = NodePath("../../PlayerCharacter")
-
-[node name="NextCameraTrigger" parent="Cameras" instance=ExtResource("2_iil5s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.09046, 0)
+[node name="PlayerCharacter" parent="." instance=ExtResource("3_vxb1s")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -16.8, 1.4, 63)
 
 [node name="Foreground" type="Node3D" parent="."]
 
@@ -150,23 +146,48 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.09046, 0)
 mesh = SubResource("PlaneMesh_vxb1s")
 skeleton = NodePath("")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="Foreground/Ground"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Foreground/Ground/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_f4xp5")
+
 [node name="Pavement" type="Node3D" parent="Foreground"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Foreground/Pavement"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0.15, 42.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.0153, 0.165924, 42.4989)
 mesh = SubResource("BoxMesh_ti6lw")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Foreground/Pavement/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Foreground/Pavement/MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_csbps")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Foreground/Pavement"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0.15, 42.5)
 mesh = SubResource("BoxMesh_ti6lw")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="Foreground/Pavement/MeshInstance3D2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Foreground/Pavement/MeshInstance3D2/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_kjobb")
+
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="Foreground/Pavement"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0.15, -42.5)
 mesh = SubResource("BoxMesh_ti6lw")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="Foreground/Pavement/MeshInstance3D3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Foreground/Pavement/MeshInstance3D3/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_wh88m")
+
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="Foreground/Pavement"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0.15, -42.5)
 mesh = SubResource("BoxMesh_ti6lw")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Foreground/Pavement/MeshInstance3D4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Foreground/Pavement/MeshInstance3D4/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_cp8b2")
 
 [node name="Building0" type="MeshInstance3D" parent="Foreground"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29, 25, 63)
@@ -298,6 +319,34 @@ mesh = SubResource("BoxMesh_kjobb")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0.8, -12)
 mesh = SubResource("CylinderMesh_hrs7e")
 
+[node name="Cameras" type="Node3D" parent="."]
+
+[node name="Cam0" parent="Cameras" node_paths=PackedStringArray("trackingTarget") instance=ExtResource("2_vxb1s")]
+transform = Transform3D(0.642788, -0.365525, 0.673213, 0, 0.878817, 0.477159, -0.766044, -0.306712, 0.564893, 11, 15, 74)
+fov = 50.0
+trackingTarget = NodePath("../../PlayerCharacter")
+
+[node name="Cam1" parent="Cameras" node_paths=PackedStringArray("trackingTarget") instance=ExtResource("2_vxb1s")]
+transform = Transform3D(-0.939693, 0.0885213, -0.330366, 0, 0.965926, 0.258819, 0.34202, 0.24321, -0.907674, -12, 15, -12)
+current = false
+fov = 50.0
+trackingTarget = NodePath("../../PlayerCharacter")
+
+[node name="NextCameraTrigger" parent="Cameras" instance=ExtResource("2_iil5s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.09046, 0)
+
+[node name="Environment&Light" type="Node" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment&Light"]
+environment = SubResource("Environment_2llne")
+compositor = SubResource("Compositor_q12u6")
+
+[node name="Sun" type="DirectionalLight3D" parent="Environment&Light"]
+transform = Transform3D(-0.978148, -0.0976086, 0.183575, 0, 0.882948, 0.469472, -0.207912, 0.459213, -0.863653, 0, 200, 0)
+light_specular = 0.2
+light_bake_mode = 1
+shadow_enabled = true
+
 [node name="Background" type="Node3D" parent="."]
 
 [node name="Citadel" type="MeshInstance3D" parent="Background"]
@@ -307,6 +356,3 @@ mesh = SubResource("BoxMesh_f4xp5")
 [node name="Overpass" type="MeshInstance3D" parent="Background"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 247, 60, 352)
 mesh = SubResource("TorusMesh_iil5s")
-
-[node name="PlayerCharacter" parent="." instance=ExtResource("3_vxb1s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, 64)

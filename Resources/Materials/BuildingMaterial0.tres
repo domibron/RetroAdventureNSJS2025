@@ -6,7 +6,6 @@ colors = PackedColorArray(0, 0, 0, 1, 0.471154, 0.471154, 0.471154, 1, 1, 1, 1, 
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_nrvhr"]
 seed = 14
-frequency = 0.05
 domain_warp_enabled = true
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_26fy0"]

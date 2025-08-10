@@ -14,7 +14,7 @@ public partial class Interactability : Area3D
 	
 	public override void _Ready()
 	{
-		SphereShape3D shape = (SphereShape3D) GetChild<CollisionShape3D>(0).GetShape();
+		SphereShape3D shape = (SphereShape3D)GetChild<CollisionShape3D>(0).GetShape();
 		shape.Radius = interactionRadius;
 	}
 	

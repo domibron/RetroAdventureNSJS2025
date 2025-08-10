@@ -6,11 +6,11 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_amygn"]
 shader = ExtResource("2_83ytx")
-shader_parameter/crt_brightness = 1.0
-shader_parameter/crt_ghost = 0.404
-shader_parameter/crt_grid = 0.4
-shader_parameter/crt_white_noise = 0.2
-shader_parameter/crt_curve = 0.05
+shader_parameter/crt_brightness = 2.0
+shader_parameter/crt_ghost = 0.5
+shader_parameter/crt_grid = 0.1
+shader_parameter/crt_white_noise = 0.08
+shader_parameter/crt_curve = 0.03
 
 [node name="Main" type="Node"]
 script = ExtResource("1_lxy7q")
